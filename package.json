@@ -1,0 +1,26 @@
+{
+  "name": "kavala-bot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbutunev/kavala-bot.git"
+  },
+  "author": "gbutunev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbutunev/kavala-bot/issues"
+  },
+  "homepage": "https://github.com/gbutunev/kavala-bot#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.3",
+    "discord-player": "^5.1.0",
+    "discord.js": "^13.1.0",
+    "ffmpeg-static": "^4.4.0",
+    "fs": "^0.0.1-security"
+  }
+}
