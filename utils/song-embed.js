@@ -1,3 +1,5 @@
+//TODO: Refactor
+
 const { MessageEmbed } = require('discord.js');
 
 function startOneSong(track) {

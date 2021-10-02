@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
-const fs = require('fs');
 const { Player } = require('discord-player');
 
 const loadConfig = require('./utils/config-loader.js');
 const loadCommands = require('./utils/command-loader.js');
 
+const package = require('./package.json');
 const config = loadConfig();
 
 const client = new Discord.Client({
@@ -33,12 +33,14 @@ client.on('messageCreate', message => {
             client.commands.get(command).execute(message, args);
         } catch (error) {
             message.reply('Oopsie. Who shit myself?');
+            console.log(message.content);
+            console.log(error);
         }
     }
 })
 
 client.once('ready', () => {
-    console.log('Bot is running');
+    console.log(`${package.name} ${package.version} started successfully`);
     client.user.setActivity(`${config.prefix}help`, { type: 'LISTENING' });
 });
 
