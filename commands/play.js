@@ -16,10 +16,15 @@ module.exports = {
             return;
         }
 
-        let queue = message.client.player.getQueue(message.guild);
+        let queue = player.getQueue(message.guild);
 
         if (!queue && !query) {
             message.channel.send('No song name or url provided');
+            return;
+        }
+
+        if (queue && !query) {
+            queue.setPaused(false);
             return;
         }
 
@@ -47,7 +52,8 @@ module.exports = {
         try {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch (e) {
-            message.channel.send('Could not connect');
+            message.channel.send('Could not connect. Possibly this is a private voice channel.');
+            return;
         }
 
         if (!queue.playing) {
@@ -68,9 +74,11 @@ module.exports = {
         else {
             if (result.playlist) {
                 //add a playlist to the queue
+                embed = embedBuilder.addPlaylist(result.playlist, queue.previousTracks[0], queue.connection.paused);
             }
             else {
                 //add a song to the queue
+                embed = embedBuilder.addOneSong(firstSong, queue.previousTracks[0], queue.connection.paused);
             }
         }
 

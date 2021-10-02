@@ -16,6 +16,7 @@ const client = new Discord.Client({
 client.commands = new Discord.Collection();
 client.commandList = [];
 client.player = new Player(client);
+client.config = config;
 
 loadCommands(client);
 
